@@ -32,10 +32,10 @@
             }
         }
 
-        public function signUser($mail,$password,$prenom,$nom){ 
-            $reqUser = $this->_bdd->query("INSERT INTO `user` (`id_user`, `mail`, `password`, `prenom`, `nom`) VALUES (NULL, '".$mail."', '".$password."', '".$prenom."', '".$nom."')");
-            if(!empty($mail) && !empty($password) && !empty($nom) && !empty($prenom)){
+        public function signUser($mail,$password,$pseudo,$prenom,$nom){ 
+            if(!empty($mail) && !empty($password) && !empty($pseudo) &&!empty($nom) && !empty($prenom)){
                 if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
+                    $reqUser = $this->_bdd->query("INSERT INTO `user` (`id_user`, `mail`, `password`, `pseudo`, `prenom`, `nom`) VALUES (NULL, '".$mail."', '".$password."', '".$pseudo."','".$prenom."', '".$nom."')");
                     return "<h6 class='green-text'><i>Inscrit!</i></h6>";
                 }
                 else{

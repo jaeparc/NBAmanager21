@@ -4,9 +4,11 @@
     require('class/bdd.php');
     $game = new game($bdd); 
     $gamesInfo = $game->getGames($_SESSION['id_logged']);
-    for($j = 0; $j < count($gamesInfo); $j++){
-        if(isset($_POST[''.$gamesInfo[$j]['id_game'].''])){
+    if(!empty($gamesInfo)){
+        for($j = 0; $j < count($gamesInfo); $j++){
+            if(isset($_POST[''.$gamesInfo[$j]['id_game'].''])){
 
+            }
         }
     }
 ?>
@@ -32,6 +34,7 @@
                     <a class="waves-effect waves-light btn" href="newgame.php">Créer une partie</a>
                 </div>
             </div>
+            <?php if(!empty($gamesInfo)){ ?>
             <table class="responsive-table centered striped">
                 <thead>
                     <tr>
@@ -60,6 +63,7 @@
                     ?>
                 </tbody>
             </table>
+            <?php } ?>
         </div>
     </div>
 </body>

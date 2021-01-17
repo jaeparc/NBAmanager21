@@ -9,7 +9,7 @@
     }
     if(isset($_POST['subSignin'])){ //Actions quand l'utilisateur soumet le formulaire d'inscription
         $signin = new user($bdd);
-        $messageSignin = $signin->signUser($_POST['emailSignin'],$_POST['passwordSignin'],$_POST['first_name'],$_POST['last_name']);
+        $messageSignin = $signin->signUser($_POST['emailSignin'],$_POST['passwordSignin'],$_POST['pseudoSignin'],$_POST['first_name'],$_POST['last_name']);
         if($messageSignin != "<h6 class='green-text'><i>Inscrit!</i></h6>"){
             $signinDisplay = true;
         } else {
@@ -93,6 +93,12 @@
                         <div class="input-field col s8 offset-s2">
                             <input id="passwordSignin" name="passwordSignin" type="password" class="validate">
                             <label for="passwordSignin">Mot de passe</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <input id="pseudoSignin" name="pseudoSignin" type="text" class="validate">
+                            <label for="pseudoSignin">Pseudo</label>
                         </div>
                     </div>
                     <div class="row">
