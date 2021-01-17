@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2021 at 08:21 PM
+-- Generation Time: Jan 17, 2021 at 08:14 PM
 -- Server version: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -41,7 +41,8 @@ CREATE TABLE `assoc_user-game` (
 INSERT INTO `assoc_user-game` (`id_user`, `id_game`, `id_team`) VALUES
 (1, 1, 1),
 (1, 2, 24),
-(1, 3, 30);
+(1, 3, 30),
+(1, 4, 13);
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,8 @@ CREATE TABLE `game` (
 INSERT INTO `game` (`id_game`, `date`) VALUES
 (1, '2021-01-16'),
 (2, '2021-01-14'),
-(3, '2021-01-16');
+(3, '2021-01-16'),
+(4, '2021-01-16');
 
 -- --------------------------------------------------------
 
@@ -119,6 +121,7 @@ INSERT INTO `team` (`id_team`, `ville`, `nom`) VALUES
 
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
+  `pseudo` varchar(50) NOT NULL,
   `mail` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
@@ -129,8 +132,8 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `mail`, `password`, `prenom`, `nom`) VALUES
-(1, 'tgarnon45@gmail.com', 'Theo2001', 'Theo', 'Garnon');
+INSERT INTO `user` (`id_user`, `pseudo`, `mail`, `password`, `prenom`, `nom`) VALUES
+(1, 'jaeparc', 'tgarnon45@gmail.com', 'Theo2001', 'Theo', 'Garnon');
 
 --
 -- Indexes for dumped tables
@@ -162,7 +165,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `team`
 --
