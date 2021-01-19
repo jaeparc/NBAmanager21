@@ -1,30 +1,30 @@
-ATL,Atlanta,Hawks,State Farm Arena
-BOS,Boston,Celtics,TD Garden
-BRK,Brooklyn,Nets,Barclays Center
-CHI,Chicago,Bulls,United Center
-CHO,Charlotte,Hornets,Spectrum Center
-CLE,Cleveland,Cavaliers,Quicken Loans Arena
-DAL,Dallas,Mavericks,American Airlines Center
-DEN,Denver,Nuggets,Pepsi Center
-DET,Detroit,Pistons,Little Caesars Arena
-GSW,Golden States,Warriors,Chase Center
-HOU,Houston,Rockets,Toyota Center
-IND,Indiana,Pacers,Bankers Life Fieldhouse
-LAC,Los Angeles,Clippers,Staples Center
-LAL,Los Angeles,Lakers,Staples Center
-MEM,Memphis,Grizzlies,FedExForum
-MIA,Miami,Heat,American Airlines Arena
-MIL,Milwaukee,Bucks,Fiserv Forum
-MIN,Minnesota,Timberwolves,Target Center
-NOP,New Orlean,Pelicans,Smoothie King Center
-NYK,New York,Knicks,Madison Square Garden
-OKC,Oklahoma,Thunder,Chesapeake Energy Arena
-ORL,Orlando,Magic,Amway Center
-PHI,Philadelphia,76ers,Wells Fargo Center
-PHO,Phoenix,Suns,Talking Stick Resort Arena
-POR,Portland,Blazers,Moda Center
-SAC,Sacramento,Kings,Golden 1 Center
-SAS,San Antonio,Spurs,AT&T Center
-TOR,Toronto,Raptors,Scotiabank Arena
-UTA,Utah,Jazz,Vivint Smart Home Arena
-WAS,Washington,Wizards,Capital One Arena
+ATL,Atlanta,Hawks,State Farm Arena,3
+BOS,Boston,Celtics,TD Garden,1
+BRK,Brooklyn,Nets,Barclays Center,1
+CHI,Chicago,Bulls,United Center,2
+CHO,Charlotte,Hornets,Spectrum Center,3
+CLE,Cleveland,Cavaliers,Quicken Loans Arena,2
+DAL,Dallas,Mavericks,American Airlines Center,6
+DEN,Denver,Nuggets,Pepsi Center,4
+DET,Detroit,Pistons,Little Caesars Arena,2
+GSW,Golden States,Warriors,Chase Center,5
+HOU,Houston,Rockets,Toyota Center,6
+IND,Indiana,Pacers,Bankers Life Fieldhouse,2
+LAC,Los Angeles,Clippers,Staples Center,5
+LAL,Los Angeles,Lakers,Staples Center,5
+MEM,Memphis,Grizzlies,FedExForum,6
+MIA,Miami,Heat,American Airlines Arena,3
+MIL,Milwaukee,Bucks,Fiserv Forum,2
+MIN,Minnesota,Timberwolves,Target Center,4
+NOP,New Orlean,Pelicans,Smoothie King Center,6
+NYK,New York,Knicks,Madison Square Garden,1
+OKC,Oklahoma,Thunder,Chesapeake Energy Arena,4
+ORL,Orlando,Magic,Amway Center,3
+PHI,Philadelphia,76ers,Wells Fargo Center,1
+PHO,Phoenix,Suns,Talking Stick Resort Arena,5
+POR,Portland,Blazers,Moda Center,4
+SAC,Sacramento,Kings,Golden 1 Center,5
+SAS,San Antonio,Spurs,AT&T Center,6
+TOR,Toronto,Raptors,Scotiabank Arena,1
+UTA,Utah,Jazz,Vivint Smart Home Arena,4
+WAS,Washington,Wizards,Capital One Arena,3

@@ -35,8 +35,15 @@
         public function signUser($mail,$password,$pseudo,$prenom,$nom){ 
             if(!empty($mail) && !empty($password) && !empty($pseudo) &&!empty($nom) && !empty($prenom)){
                 if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
-                    $reqUser = $this->_bdd->query("INSERT INTO `user` (`id_user`, `mail`, `password`, `pseudo`, `prenom`, `nom`) VALUES (NULL, '".$mail."', '".$password."', '".$pseudo."','".$prenom."', '".$nom."')");
-                    return "<h6 class='green-text'><i>Inscrit!</i></h6>";
+                    $reqUser = $this->_bdd->prepare("SELECT * FROM user WHERE mail = ? AND password = ?");
+                    $reqUser->execute(array($mail, $password));
+                    $userExist = $reqUser->rowCount();
+                    if($userExist == 0){
+                        $this->_bdd->query("INSERT INTO `user` (`id_user`, `pseudo`, `mail`, `password`, `prenom`, `nom`) VALUES (NULL, '".$pseudo."', '".$mail."', '".$password."','".$prenom."', '".$nom."')");
+                        return "<h6 class='green-text'><i>Inscrit!</i></h6>";
+                    } else {
+                        return "<h6 class='red-text'><i>Adresse mail déjà utilisée</i></h6>";
+                    }
                 }
                 else{
                     return "<h6 class='red-text'><i>Adresse mail non valide</i></h6>";
