@@ -1,10 +1,79 @@
 <?php
     class user{
         private $_bdd;
+        private $_iduser;
+        private $_mail;
+        private $_password;
+        private $_pseudo;
+        private $_prenom;
+        private $_nom;
 
         public function __construct($bdd)
         {
             $this->_bdd = $bdd;
+        }
+
+        public function getId(){
+            return $this->_iduser;
+        }
+
+        public function getMail(){
+            return $this->_mail;
+        }
+
+        public function getPassword(){
+            return $this->_password;
+        }
+
+        public function getPseudo(){
+            return $this->_pseudo;
+        }
+
+        public function getPrenom(){
+            return $this->_prenom;
+        }
+
+        public function getNom(){
+            return $this->_nom;
+        }
+
+        public function setId($newId){
+            $this->_iduser = $newId;
+        }
+
+        public function setMail($newMail){
+            $this->_mail = $newMail;
+        }
+
+        public function setPassword($newPassword){
+            $this->_password = $newPassword;
+        }
+
+        public function setPseudo($newPseudo){
+            $this->_pseudo = $newPseudo;
+        }
+
+        public function setPrenom($newPrenom){
+            $this->_prenom = $newPrenom;
+        }
+
+        public function setNom($newNom){
+            $this->_nom = $newNom;
+        }
+
+        public function loadDataUser(){
+            $reqUser = $this->_bdd->prepare("SELECT * FROM user WHERE 'id_user' = ?");
+            $reqUser->execute(array($this->_iduser));
+            $userExist = $reqUser->rowCount();
+            $userInfo = $reqUser->fetch();
+            if ($userExist != 0) {
+                $this->_iduser = $userInfo['id_user'];
+                $this->_mail = $userInfo['mail'];
+                $this->_password = $userInfo['password'];
+                $this->_pseudo = $userInfo['pseudo'];
+                $this->_prenom = $userInfo['prenom'];
+                $this->_nom = $userInfo['nom'];
+            }
         }
 
         public function verifUser($mail, $password) 
@@ -16,9 +85,13 @@
                     $userExist = $reqUser->rowCount();
                     $userInfo = $reqUser->fetch();
                     if ($userExist != 0) {
-                        $_SESSION['id_logged'] = $userInfo['id_user'];
-                        header('Location:choosegame.php');
-                        return "<h6 class='green-text'><i>Connecté ".$_SESSION['id_logged']."</i></h6>";
+                        $this->_iduser = $userInfo['id_user'];
+                        $this->_mail = $userInfo['mail'];
+                        $this->_password = $userInfo['password'];
+                        $this->_pseudo = $userInfo['pseudo'];
+                        $this->_prenom = $userInfo['prenom'];
+                        $this->_nom = $userInfo['nom'];
+                        return "ok";
                     }else{
                         return "<h6 class='red-text'><i>Mail ou mot de passe incorrect</i></h6>";
                     }

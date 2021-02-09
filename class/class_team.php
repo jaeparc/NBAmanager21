@@ -7,41 +7,36 @@
         private $_gym;
         private $_staffsalary;
         private $_salarycap;
-        private $_idgame;
-        private $_idgamefav;
-        private $_iddivision;
+        private $_game;
+        private $_favteam;
+        private $_division;
         private $_bdd;
 
-        public function __construct(
-            $id,$abreviation,$nom,$city,$gym,$staffsalary,$salarycap,
-            $idgame,$idgamefav,$iddivision,$bdd
-        )
-        {
-            $this->_id = $id;
-            $this->_abreviation = $abreviation;
-            $this->_nom = $nom;
-            $this->_city = $city;
-            $this->_gym = $gym;
-            $this->_staffsalary = $staffsalary;
-            $this->_salarycap = $salarycap;
-            $this->_idgame = $idgame;
-            $this->_idgamefav = $idgamefav;
-            $this->_iddivision = $iddivision;
+        public function __construct($bdd){
             $this->_bdd = $bdd;
         }
 
-        public function loadDataTeam(){
-            $rawData = $this->_bdd->query('SELECT * FROM team WHERE "id_team" = '.$this->_id);
+        public function loadDataTeam($fav){
+            if($fav == NULL){
+                $rawData = $this->_bdd->query('SELECT * FROM team WHERE "id_team" = '.$this->_id);
+            } else {
+                $rawData = $this->_bdd->query('SELECT * FROM team WHERE "id_game" = '.$this->_id.' AND "favteam" = true');
+            }
             $cleanData = $rawData->fetch();
+            $this->_id = $cleanData['id_team'];
             $this->_abreviation = $cleanData['abreviation'];
             $this->_nom = $cleanData['name_team'];
             $this->_city = $cleanData['city'];
             $this->_gym = $cleanData['gym'];
             $this->_staffsalary = $cleanData['staffsalary'];
             $this->_salarycap = $cleanData['salarycap'];
-            $this->_idgame = $cleanData['idgame'];
-            $this->_idgamefav = $cleanData['idgamefav'];
-            $this->_iddivision = $cleanData['iddivision'];
+            $this->_game = new game($this->_bdd);
+            $this->_game->setId($cleanData['id_game']);
+            $this->_game->loadDataGame();
+            $this->_favteam = $cleanData['favteam'];
+            $this->_division = new division($this->_bdd);
+            $this->_division->setId($cleanData['iddivision']);
+            $this->_division->loadDataDivision();
         }
 
         public function getId(){
@@ -59,20 +54,52 @@
         public function getGym(){
             return $this->_gym;
         }
-        public function getStaffsalary(){
+        public function getStaffSalary(){
             return $this->_staffsalary;
         }
         public function getSalarycap(){
             return $this->_salarycap;
         }
-        public function getIdGame(){
-            return $this->_idgame;
+        public function getGame(){
+            return $this->_game;
         }
-        public function getIdGameFav(){
-            return $this->_idgamefav;
+        public function getFavTeam(){
+            return $this->_favteam;
         }
-        public function getIdDivision(){
-            return $this->_iddivision;
+        public function getDivision(){
+            return $this->_division;
         }
+
+        public function setId($newId){
+            $this->_id = $newId;
+        }
+        public function setAbreviation($newAbreviation){
+            $this->_abreviation = $newAbreviation;
+        }
+        public function setNom($newNom){
+            $this->_nom = $newNom;
+        }
+        public function setCity($newCity){
+            $this->_city = $newCity;
+        }
+        public function setGym($newGym){
+            $this->_gym = $newGym;
+        }
+        public function setStaffSalary($newStaffSalary){
+            $this->_staffsalary = $newStaffSalary;
+        }
+        public function setSalaryCap($newSalaryCap){
+            $this->_salarycap = $newSalaryCap;
+        }
+        public function setGame($newGame){
+            $this->_game = $newGame;
+        }
+        public function setFavTeam($newFavTeam){
+            $this->_favteam = $newFavTeam;
+        }
+        public function setDivision($newDivision){
+            $this->_division = $newDivision;
+        }
+    
     }
 ?>

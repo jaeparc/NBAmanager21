@@ -1,16 +1,9 @@
 <?php
     session_start();
-    require('class/class_game.php');
-    require('class/bdd.php');
-    $game = new game($bdd); 
-    $gamesInfo = $game->getGames($_SESSION['id_logged']);
-    if(!empty($gamesInfo)){
-        for($j = 0; $j < count($gamesInfo); $j++){
-            if(isset($_POST[''.$gamesInfo[$j]['id_game'].''])){
-
-            }
-        }
-    }
+    include 'class/class_user.php';
+    include 'class/class_game.php';
+    include 'class/bdd.php';
+    include 'function/function_displayGames.php';
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +27,6 @@
                     <a class="waves-effect waves-light btn" href="newgame.php">Créer une partie</a>
                 </div>
             </div>
-            <?php if(!empty($gamesInfo)){ ?>
             <table class="responsive-table centered striped">
                 <thead>
                     <tr>
@@ -46,24 +38,10 @@
 
                 <tbody>
                     <?php
-                        for($i = 0; $i < count($gamesInfo); $i++){
-                            echo "
-                            <tr>
-                                <td>".$gamesInfo[$i]['team']."</td>
-                                <td>".$gamesInfo[$i]['dateGame']."</td>
-                                <td>
-                                    <form method='post' action=''>
-                                        <button class='btn waves-effect waves-light' type='submit' name='".$gamesInfo[$i]['id_game']."'>
-                                            Jouer
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>";
-                        }
+                        displayGames($bdd,$_SESSION['userLogged']);
                     ?>
                 </tbody>
             </table>
-            <?php } ?>
         </div>
     </div>
 </body>

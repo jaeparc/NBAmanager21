@@ -1,15 +1,16 @@
 <?php
     session_start();
-    require('class/class_user.php');
-    require('class/bdd.php');
+    include 'class/bdd.php';
+    include 'class/class_user.php';
+    include 'function/function_login.php';
+    include 'function/function_signin.php';
+
     if(isset($_POST['subLogin'])){ //Actions quand l'utilisateur soumet le formulaire de connexion
-        $login = new user($bdd);
-        $messageLogin = $login->verifUser($_POST['emailLogin'],$_POST['passwordLogin']);
+        $messageLogin = logIn($_POST['emailLogin'],$_POST['passwordLogin'],$bdd);
         $signinDisplay = false;
     }
     if(isset($_POST['subSignin'])){ //Actions quand l'utilisateur soumet le formulaire d'inscription
-        $signin = new user($bdd);
-        $messageSignin = $signin->signUser($_POST['emailSignin'],$_POST['passwordSignin'],$_POST['pseudoSignin'],$_POST['first_name'],$_POST['last_name']);
+        $messageSignin = signIn($_POST['emailSignin'],$_POST['passwordSignin'],$_POST['pseudoSignin'],$_POST['first_name'],$_POST['last_name'],$bdd);
         if($messageSignin != "<h6 class='green-text'><i>Inscrit!</i></h6>"){
             $signinDisplay = true;
         } else {
