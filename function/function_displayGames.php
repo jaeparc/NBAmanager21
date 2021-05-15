@@ -5,11 +5,12 @@ function displayGames($bdd,$idUserLogged){
     $userLogged->loadDataUser();
     $rawCount = $bdd->query("SELECT COUNT(*) FROM `game` WHERE `id_user` = ".$userLogged->getId());
     $count = $rawCount->fetch();
-    for($i = 0; $i < $count[0]; $i++){
+    /*for($i = 0; $i < $count[0]; $i++){
         if(isset($_POST['deleteGame'.$i])){
             $_POST['game']->delete();
         }
-    }
+    }*/
+    var_dump($count);
     $rawId = $bdd->query("SELECT `id_game` FROM `game` WHERE `id_user` = ".$userLogged->getId()." ORDER BY `date_game` DESC");
     $i = 0;
     while($pureId = $rawId->fetch()){
