@@ -4,7 +4,7 @@
     require('class/bdd.php');
     $game = new game($bdd);
     if(isset($_POST['subTeam'])){
-        $game->newGame($_SESSION['id_logged'],$_POST['id_team']);
+        $game->newGame($_SESSION['userLogged'],$_POST['id_team']);
     }
 ?>
 

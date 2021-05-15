@@ -1,5 +1,8 @@
 <?php
-function displayGames($bdd,$userLogged){
+function displayGames($bdd,$idUserLogged){
+    $userLogged = new user($bdd);
+    $userLogged->setId($idUserLogged);
+    $userLogged->loadDataUser();
     $rawCount = $bdd->query("SELECT COUNT(*) FROM `game` WHERE `id_user` = ".$userLogged->getId());
     $count = $rawCount->fetch();
     for($i = 0; $i < $count[0]; $i++){
