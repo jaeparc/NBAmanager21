@@ -6,8 +6,8 @@
         if($messageLogin == "ok"){
             $_SESSION['userLogged'] = $login;
             $messageLogin = $login->getPseudo();
+            header('Location:choosegame.php');
             return $messageLogin;
-            //header('Location:choosegame.php');
         } else {
             return $messageLogin;
         }
