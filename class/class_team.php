@@ -18,9 +18,9 @@
 
         public function loadDataTeam($fav){
             if($fav == NULL){
-                $rawData = $this->_bdd->query('SELECT * FROM team WHERE "id_team" = '.$this->_id);
+                $rawData = $this->_bdd->query('SELECT * FROM team WHERE `id_team` = '.$this->_id);
             } else {
-                $rawData = $this->_bdd->query('SELECT * FROM team WHERE "id_game" = '.$this->_id.' AND "favteam" = true');
+                $rawData = $this->_bdd->query('SELECT * FROM team WHERE `id_game` = '.$this->_id.' AND `favteam` = true');
             }
             $cleanData = $rawData->fetch();
             $this->_id = $cleanData['id_team'];

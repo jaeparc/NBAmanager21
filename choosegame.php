@@ -2,6 +2,7 @@
     session_start();
     include 'class/class_user.php';
     include 'class/class_game.php';
+    include 'class/class_team.php';
     include 'class/bdd.php';
     include 'function/function_displayGames.php';
 ?>
@@ -30,7 +31,6 @@
             <table class="responsive-table centered striped">
                 <thead>
                     <tr>
-                        <th>Franchise</th>
                         <th>Date de création</th>
                         <th></th>
                     </tr>

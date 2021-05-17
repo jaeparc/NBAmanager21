@@ -31,7 +31,7 @@
         }
 
         public function loadDataGame(){
-            $rawData = $this->_bdd->query('SELECT * FROM game WHERE "id_game" = '.$this->_id);
+            $rawData = $this->_bdd->query('SELECT * FROM `game` WHERE `id_game` = '.$this->_id);
             $cleanData = $rawData->fetch();
             $this->_id = $cleanData['id_game'];
             $this->_date = $cleanData['date_game'];
@@ -41,7 +41,7 @@
         }
 
         public function delete(){
-            $this->_bdd->query('DELETE FROM game WHERE "id_game" = '.$this->_id);
+            $this->_bdd->query('DELETE FROM game WHERE `id_game` = '.$this->_id);
         }
 
         /*public function newGame($iduser,$idteam){
