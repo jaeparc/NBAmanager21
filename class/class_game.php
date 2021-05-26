@@ -58,7 +58,7 @@
             $reqGame = $this->_bdd->query('SELECT MAX(id_game) FROM GAME WHERE id_user = '.$iduser.'');
             $id = $reqGame->fetch();
             $this->_bdd->query("LOAD DATA LOCAL INFILE 'bdd/Team.csv' INTO TABLE TEAM FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'");
-            $this->_bdd->query("UPDATE TEAM SET id_game = '".$id['MAX(id_game)']."',id_game_fav = '0'  WHERE id_team IN (select id_team from TEAM order by id_team DESC)");
+            $this->_bdd->query("");
         }
     }
 ?>
