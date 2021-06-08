@@ -18,8 +18,12 @@ function displayGames($bdd,$idUserLogged){
         ${"game".$i} = new game($bdd);
         ${"game".$i}->setId($pureId['id_game']);
         ${"game".$i}->loadDataGame();
+        $teamFav = new team($bdd);
+        $teamFav->setGame(${"game".$i});
+        $teamFav->loadDataTeamFav();
         echo "<tr>
             <td>".${"game".$i}->getDate()."</td>
+            <td>".$teamFav->getCity()." ".$teamFav->getNom()."</td>
             <td>
                 <form method='POST' action=''>
                     <input type='hidden' name='id_game' value='".${"game".$i}->getId()."'>

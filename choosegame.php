@@ -32,6 +32,7 @@
                 <thead>
                     <tr>
                         <th>Date de création</th>
+                        <th>Equipe choisie</th>
                         <th></th>
                     </tr>
                 </thead>

@@ -57,8 +57,13 @@
             $this->_bdd->query('INSERT INTO GAME(id_game, date_game,id_user) VALUES (NULL,"'.$date.'","'.$iduser.'")');
             $reqGame = $this->_bdd->query('SELECT MAX(id_game) FROM GAME WHERE id_user = '.$iduser.'');
             $id = $reqGame->fetch();
-            $this->_bdd->query("LOAD DATA LOCAL INFILE 'bdd/Team.csv' INTO TABLE TEAM FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'");
-            $this->_bdd->query("");
+            var_dump($id["MAX(id_game)"]);
+            $this->_bdd->query("LOAD DATA INFILE '/Applications/XAMPP/xamppfiles/htdocs/nbamanager21/NBAmanager21/bdd/Team.csv' INTO TABLE TEAM FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (city,name_team,gym,id_division)");
+            $this->_bdd->query("UPDATE `TEAM` SET `id_game` =".$id["MAX(id_game)"]." WHERE `id_team` IN (SELECT TOP(30) `id_team` FROM `TEAM` ORDER BY `id_team` DESC)");
+            $reqTeam = $this->_bdd->query('SELECT MAX(id_team) FROM TEAM');
+            $idT = $reqTeam->fetch();
+            $idSelected = 30 - $idteam;
+            $this->_bdd->query("UPDATE 'TEAM' SET 'id_game_fav'=".$id["MAX(id_game)"]." WHERE 'id_team' = ".$idT["MAX(id_team)"]-$idSelected);
         }
     }
 ?>
